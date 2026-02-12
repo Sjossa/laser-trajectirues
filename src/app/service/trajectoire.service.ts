@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TrajectoireData } from '../model/Trajectoire.model';
+import { TrajectoireData } from '../model/trajectoire.model';
 
 @Injectable({
   providedIn: 'root',
