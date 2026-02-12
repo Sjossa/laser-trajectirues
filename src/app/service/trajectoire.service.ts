@@ -6,7 +6,7 @@ import { TrajectoryData } from '../model/Trajectoire.model';
 @Injectable({
   providedIn: 'root',
 })
-export class TrajectoryService {
+export class TrajectoireService {
   private dataUrl = 'assets/trajectorie.json';
 
   constructor(private http: HttpClient) {}

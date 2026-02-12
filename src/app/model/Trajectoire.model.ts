@@ -3,14 +3,14 @@ export interface Pen {
   power: number;
 }
 
-export interface Trajectory {
+export interface Trajectoire {
   id: number;
   path: string;
   pen: Pen;
 }
 
-export interface TrajectoryData {
+export interface TrajectoireData {
   width: number;
   height: number;
-  trajectories: Trajectory[];
+  trajectories: Trajectoire[];
 }
