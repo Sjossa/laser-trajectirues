@@ -25,7 +25,7 @@ h1 {
   gap: 20px;
 }
 
-.trajectory-svg {
+.trajectoire-svg {
   border: 2px solid #333;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -35,22 +35,22 @@ h1 {
 }
 
 /* Styles des trajectoires */
-.trajectory {
+.trajectoire {
   transition: all 0.2s ease;
 }
 
-.trajectory.hovered {
+.trajectoire.hovered {
   filter: drop-shadow(0 0 8px currentColor);
   stroke-width: 5 !important;
 }
 
-.trajectory.selected {
+.trajectoire.selected {
   filter: drop-shadow(0 0 12px currentColor);
   stroke-width: 6 !important;
 }
 
 /* Numéros d'ordre */
-.trajectory-order {
+.trajectoire-order {
   font-size: 14px;
   font-weight: bold;
   fill: #333;
@@ -58,7 +58,7 @@ h1 {
   opacity: 0.7;
 }
 
-.trajectory-order.highlighted {
+.trajectoire-order.highlighted {
   font-size: 18px;
   opacity: 1;
 }
@@ -107,13 +107,13 @@ h1 {
 }
 
 /* Liste des trajectoires */
-.trajectory-list {
+.trajectoire-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.trajectory-item {
+.trajectoire-item {
   background: white;
   border: 2px solid #ddd;
   border-radius: 6px;
@@ -122,27 +122,27 @@ h1 {
   transition: all 0.2s ease;
 }
 
-.trajectory-item:hover,
-.trajectory-item.hovered {
+.trajectoire-item:hover,
+.trajectoire-item.hovered {
   border-color: #4caf50;
   box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
   transform: translateY(-2px);
 }
 
-.trajectory-item.selected {
+.trajectoire-item.selected {
   border-color: #2196f3;
   background: #e3f2fd;
   box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
 }
 
-.trajectory-header {
+.trajectoire-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.trajectory-number {
+.trajectoire-number {
   background: #333;
   color: white;
   width: 28px;
@@ -155,14 +155,14 @@ h1 {
   font-size: 14px;
 }
 
-.trajectory-id {
+.trajectoire-id {
   color: #666;
   font-size: 12px;
   font-weight: bold;
 }
 
 /* Détails des trajectoires */
-.trajectory-details {
+.trajectoire-details {
   display: flex;
   flex-direction: column;
   gap: 8px;

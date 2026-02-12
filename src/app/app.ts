@@ -1,13 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { TrajectoireViewerComponent } from './page/trajectoire-viewver/trajectoireView.Component';
+import { Component } from '@angular/core';
+import { TrajectoireViewerComponent } from './pages/trajectoire-viewer/trajectoire-viewer.component';
 
 @Component({
   selector: 'app-root',
-
-  imports: [TrajectoireViewerComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [TrajectoireViewerComponent],
 })
-export class App {
-  protected readonly title = signal('laser-trajectories');
+export class AppComponent {
+  title = 'laser-trajectirues';
 }

@@ -7,7 +7,7 @@ import { TrajectoireData } from '../model/trajectoire.model';
   providedIn: 'root',
 })
 export class TrajectoireService {
-  private dataUrl = 'assets/trajectorie.json';
+  private dataUrl = '/assets/trajectoire.json';
 
   constructor(private http: HttpClient) {}
 

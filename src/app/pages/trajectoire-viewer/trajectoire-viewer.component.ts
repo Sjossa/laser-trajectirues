@@ -7,8 +7,8 @@ import { TrajectoireService } from '../../service/trajectoire.service';
   selector: 'app-trajectoire-viewer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './trajectoireviewer.component.html',
-  styleUrls: ['./trajectoireviewver.compoenet.css'],
+  templateUrl: './trajectoire-viewer.component.html',
+  styleUrls: ['./trajectoire-viewer.component.css'],
 })
 export class TrajectoireViewerComponent implements OnInit {
   trajectoireData: TrajectoireData | null = null;
