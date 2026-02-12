@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Trajectoire, TrajectoireData } from '../model/Trajectoire.model';
-import { TrajectoireService } from '../service/trajectoire.service';
+import { Trajectoire, TrajectoireData } from '../../model/trajectoire.model';
+import { TrajectoireService } from '../../service/trajectoire.service';
 
 @Component({
   selector: 'app-trajectoire-viewer',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './trajectoire-viewer.component.html',
-  styleUrls: ['./trajectoire-viewer.component.css'],
+  templateUrl: './trajectoireviewer.component.html',
+  styleUrls: ['./trajectoireviewver.compoenet.css'],
 })
 export class TrajectoireViewerComponent implements OnInit {
   trajectoireData: TrajectoireData | null = null;

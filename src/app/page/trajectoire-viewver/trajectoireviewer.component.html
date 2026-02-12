@@ -1,0 +1,126 @@
+<div class="container" *ngIf="trajectoireData">
+  <h1>Visualisation des Trajectoires Laser</h1>
+
+  <div class="main-content">
+    <!-- Zone SVG principale -->
+    <div class="svg-container">
+      <svg
+        [attr.width]="trajectoireData.width"
+        [attr.height]="trajectoireData.height"
+        [attr.viewBox]="'0 0 ' + trajectoireData.width + ' ' + trajectoireData.height"
+        class="trajectoire-svg"
+      >
+        <!-- Fond blanc pour mieux visualiser -->
+        <rect
+          [attr.width]="trajectoireData.width"
+          [attr.height]="trajectoireData.height"
+          fill="white"
+          stroke="#ddd"
+          stroke-width="1"
+        />
+
+        <!-- Affichage de chaque trajectoire -->
+        <g *ngFor="let trajectoire of trajectoireData.trajectories; let i = index">
+          <!-- Path principal -->
+          <path
+            [attr.d]="trajectoire.path"
+            [attr.stroke]="trajectoire.pen.color"
+            [attr.stroke-width]="getStrokeWidth(trajectoire.pen.power)"
+            [attr.opacity]="getOpacity(trajectoire.pen.power)"
+            [attr.class]="getTrajectoireClass(trajectoire)"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            (mouseenter)="onTrajectoireHover(trajectoire)"
+            (mouseleave)="onTrajectoireHover(null)"
+            (click)="onTrajectoireClick(trajectoire)"
+            style="cursor: pointer"
+          ></path>
+
+          <!-- Numéro de l'ordre d'exécution -->
+          <text
+            *ngIf="trajectoire.path.includes('M')"
+            [attr.x]="trajectoire.path.split(' ')[1]"
+            [attr.y]="trajectoire.path.split(' ')[2]"
+            class="trajectoire-order"
+            [class.highlighted]="isSelected(trajectoire) || isHovered(trajectoire)"
+          >
+            {{ i + 1 }}
+          </text>
+        </g>
+      </svg>
+
+      <!-- Légende -->
+      <div class="legend">
+        <h3>Légende</h3>
+        <div class="legend-item"><strong>Couleur:</strong> Couleur du pen (laser)</div>
+        <div class="legend-item">
+          <strong>Épaisseur:</strong> Puissance du laser (plus épais = plus puissant)
+        </div>
+        <div class="legend-item"><strong>Opacité:</strong> Niveau de puissance (40% à 100%)</div>
+        <div class="legend-item"><strong>Numéros:</strong> Ordre d'exécution des trajectoires</div>
+      </div>
+    </div>
+
+    <!-- Panneau d'information latéral -->
+    <div class="info-panel">
+      <h2>Liste des Trajectoires</h2>
+
+      <div class="trajectoire-list">
+        <div
+          *ngFor="let trajectoire of trajectoireData.trajectories; let i = index"
+          class="trajectoire-item"
+          [class.selected]="isSelected(trajectoire)"
+          [class.hovered]="isHovered(trajectoire)"
+          (mouseenter)="onTrajectoireHover(trajectoire)"
+          (mouseleave)="onTrajectoireHover(null)"
+          (click)="onTrajectoireClick(trajectoire)"
+        >
+          <div class="trajectoire-header">
+            <span class="trajectoire-number">{{ i + 1 }}</span>
+            <span class="trajectoire-id">ID: {{ trajectoire.id }}</span>
+          </div>
+
+          <div class="trajectoire-details">
+            <div class="detail-row">
+              <span class="detail-label">Couleur:</span>
+              <span class="color-indicator" [style.background-color]="trajectoire.pen.color"></span>
+              <span class="detail-value">{{ trajectoire.pen.color }}</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Puissance:</span>
+              <span class="detail-value">{{ trajectoire.pen.power }}%</span>
+              <div class="power-bar">
+                <div
+                  class="power-fill"
+                  [style.width.%]="trajectoire.pen.power"
+                  [style.background-color]="trajectoire.pen.color"
+                ></div>
+              </div>
+            </div>
+
+            <div class="detail-row path-preview">
+              <span class="detail-label">Path:</span>
+              <span class="detail-value path-text">{{ trajectoire.path }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informations détaillées sur la trajectoire sélectionnée -->
+      <div *ngIf="selectedTrajectoire" class="selected-info">
+        <h3>Trajectoire Sélectionnée</h3>
+        <div class="selected-details">
+          <p><strong>ID:</strong> {{ selectedTrajectoire.id }}</p>
+          <p><strong>Couleur:</strong> {{ selectedTrajectoire.pen.color }}</p>
+          <p><strong>Puissance:</strong> {{ selectedTrajectoire.pen.power }}%</p>
+          <p><strong>Path SVG:</strong></p>
+          <code>{{ selectedTrajectoire.path }}</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!trajectoireData" class="loading">Chargement des trajectoires...</div>
