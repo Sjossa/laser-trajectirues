@@ -1,0 +1,46 @@
+{
+  "width": 400,
+  "height": 300,
+  "trajectories": [
+    {
+      "id": 1,
+      "path": "M 50 50 L 200 50",
+      "pen": {
+        "color": "red",
+        "power": 100
+      }
+    },
+    {
+      "id": 2,
+      "path": "M 200 50 L 200 150",
+      "pen": {
+        "color": "red",
+        "power": 80
+      }
+    },
+    {
+      "id": 3,
+      "path": "M 200 150 Q 125 200 50 150",
+      "pen": {
+        "color": "blue",
+        "power": 60
+      }
+    },
+    {
+      "id": 4,
+      "path": "M 50 150 L 50 50",
+      "pen": {
+        "color": "blue",
+        "power": 40
+      }
+    },
+    {
+      "id": 5,
+      "path": "M 100 100 L 150 100 L 125 130 Z",
+      "pen": {
+        "color": "green",
+        "power": 90
+      }
+    }
+  ]
+}
